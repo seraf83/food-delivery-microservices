@@ -98,6 +98,13 @@ delivery-worker   | 🛵 Courier Богдан Коваль assigned to order #1
 user-worker       | 📱 SMS → order#1: Courier is on the way! ETA: 41 min
 ```
 
+**Complete the delivery:**
+```bash
+curl -s -X POST http://localhost:8003/deliveries/1/complete
+```
+
+You should see order status updated to `delivered` in the database.
+
 **Browse Kafka topics:**
 
 Open [http://localhost:8080](http://localhost:8080) in your browser.
