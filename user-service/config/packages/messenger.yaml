@@ -1,0 +1,35 @@
+framework:
+    messenger:
+        transports:
+            kafka_orders:
+                dsn: "kafka://kafka:9092"
+                serializer: App\Serializer\KafkaSerializer
+                options:
+                    commitAsync: true
+                    receiveTimeout: 10000
+                    topic:
+                        name: orders
+                    kafka_conf:
+                        group.id: user-orders-consumer
+                        enable.auto.offset.store: 'false'
+                    topic_conf:
+                        auto.offset.reset: earliest
+
+            kafka_deliveries:
+                dsn: "kafka://kafka:9092"
+                serializer: App\Serializer\KafkaSerializer
+                options:
+                    commitAsync: true
+                    receiveTimeout: 10000
+                    topic:
+                        name: deliveries
+                    kafka_conf:
+                        group.id: user-deliveries-consumer
+                        enable.auto.offset.store: 'false'
+                    topic_conf:
+                        auto.offset.reset: earliest
+
+        routing:
+            'App\Message\OrderPlaced':       kafka_orders
+            'App\Message\DeliveryAssigned':  kafka_deliveries
+            'App\Message\DeliveryCompleted': kafka_deliveries

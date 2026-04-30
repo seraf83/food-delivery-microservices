@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MessDetectorOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PHPCSFixerOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PHPCodeSnifferOptionsConfiguration">
+    <option name="highlightLevel" value="WARNING" />
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/user-service/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/flex" />
+      <path value="$PROJECT_DIR$/user-service/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/user-service/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/user-service/vendor/doctrine/sql-formatter" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/user-service/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/user-service/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/framework-bundle" />
+      <path value="$PROJECT_DIR$/user-service/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/user-service/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/user-service/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/doctrine-bridge" />
+      <path value="$PROJECT_DIR$/user-service/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/runtime" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/clock" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/dotenv" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/messenger" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/user-service/vendor/composer" />
+      <path value="$PROJECT_DIR$/user-service/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/user-service/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/user-service/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/user-service/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/user-service/vendor/psr/clock" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/user-service/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/user-service/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/user-service/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/flex" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/doctrine/sql-formatter" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/framework-bundle" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/doctrine-bridge" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/runtime" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/clock" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/dotenv" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/messenger" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/composer" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/psr/clock" />
+      <path value="$PROJECT_DIR$/order-service/vendor/composer" />
+      <path value="$PROJECT_DIR$/order-service/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/order-service/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/order-service/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/order-service/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/order-service/vendor/psr/clock" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/order-service/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/order-service/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/order-service/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/order-service/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/flex" />
+      <path value="$PROJECT_DIR$/order-service/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/order-service/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/order-service/vendor/doctrine/sql-formatter" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/order-service/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/order-service/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/framework-bundle" />
+      <path value="$PROJECT_DIR$/order-service/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/order-service/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/order-service/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/doctrine-bridge" />
+      <path value="$PROJECT_DIR$/order-service/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/runtime" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/clock" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/dotenv" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/messenger" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/order-service/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/order-service/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/order-service/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/order-service/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/order-service/vendor/koco/messenger-kafka" />
+      <path value="$PROJECT_DIR$/user-service/vendor/koco/messenger-kafka" />
+      <path value="$PROJECT_DIR$/user-service/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/user-service/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/user-service/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/delivery-service/vendor/koco/messenger-kafka" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
+  <component name="PhpStanOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/order-service/vendor/autoload.php" />
+      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/user-service/vendor/autoload.php" />
+    </phpunit_settings>
+  </component>
+  <component name="PsalmOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+</project>

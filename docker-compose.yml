@@ -1,0 +1,208 @@
+version: '3.8'
+
+services:
+
+    # ─── KAFKA ────────────────────────────────────────────────────
+    zookeeper:
+        image: confluentinc/cp-zookeeper:7.5.0
+        environment:
+            ZOOKEEPER_CLIENT_PORT: 2181
+        networks:
+            - delivery-net
+
+    kafka:
+        image: confluentinc/cp-kafka:7.5.0
+        depends_on:
+            - zookeeper
+        ports:
+            - "9092:9092"
+        environment:
+            KAFKA_BROKER_ID: 1
+            KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+            KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+            KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+            KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+        healthcheck:
+            test: ["CMD", "kafka-broker-api-versions", "--bootstrap-server", "localhost:9092"]
+            interval: 10s
+            timeout: 10s
+            retries: 5
+        networks:
+            - delivery-net
+
+    kafka-ui:
+        image: provectuslabs/kafka-ui:latest
+        ports:
+            - "8080:8080"
+        environment:
+            KAFKA_CLUSTERS_0_NAME: local
+            KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+        depends_on:
+            - kafka
+        networks:
+            - delivery-net
+
+    # ─── USER SERVICE ─────────────────────────────────────────────
+    user-db:
+        ports:
+            - "3309:3306"
+        image: mysql:8.0
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: users
+            MYSQL_USER: user_user
+            MYSQL_PASSWORD: user_pass
+        volumes:
+            - user-db-data:/var/lib/mysql
+        networks:
+            - delivery-net
+
+    user-service:
+        build:
+            context: ./user-service
+            dockerfile: ../Dockerfile
+        ports:
+            - "8001:80"
+        environment:
+            DATABASE_URL: mysql://user_user:user_pass@user-db:3306/users
+            KAFKA_DSN: kafka:9092
+            APP_ENV: dev
+            APP_SECRET: user_secret_key
+        depends_on:
+            - user-db
+            - kafka
+        volumes:
+            - ./user-service:/var/www/html
+        networks:
+            - delivery-net
+
+    user-worker:
+        build:
+            context: ./user-service
+            dockerfile: ../Dockerfile
+        command: php bin/console messenger:consume kafka_orders kafka_deliveries --time-limit=3600 -vv
+        environment:
+            DATABASE_URL: mysql://user_user:user_pass@user-db:3306/users
+            KAFKA_DSN: kafka:9092
+            APP_ENV: dev
+            APP_SECRET: user_secret_key
+        depends_on:
+            - user-db
+            - kafka
+        volumes:
+            - ./user-service:/var/www/html
+        networks:
+            - delivery-net
+
+    # ─── ORDER SERVICE ────────────────────────────────────────────
+    order-db:
+        ports:
+            - "3307:3306"
+        image: mysql:8.0
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: orders
+            MYSQL_USER: order_user
+            MYSQL_PASSWORD: order_pass
+        volumes:
+            - order-db-data:/var/lib/mysql
+        networks:
+            - delivery-net
+
+    order-service:
+        build:
+            context: ./order-service
+            dockerfile: ../Dockerfile
+        ports:
+            - "8002:80"
+        environment:
+            DATABASE_URL: mysql://order_user:order_pass@order-db:3306/orders
+            KAFKA_DSN: kafka:9092
+            APP_ENV: dev
+            APP_SECRET: order_secret_key
+        depends_on:
+            - order-db
+            - kafka
+        volumes:
+            - ./order-service:/var/www/html
+        networks:
+            - delivery-net
+
+    order-worker:
+        build:
+            context: ./order-service
+            dockerfile: ../Dockerfile
+        command: php bin/console messenger:consume kafka --time-limit=3600 -vv
+        environment:
+            DATABASE_URL: mysql://order_user:order_pass@order-db:3306/orders
+            KAFKA_DSN: kafka:9092
+            APP_ENV: dev
+            APP_SECRET: order_secret_key
+        depends_on:
+            - order-db
+            - kafka
+        volumes:
+            - ./order-service:/var/www/html
+        networks:
+            - delivery-net
+
+    # ─── DELIVERY SERVICE ─────────────────────────────────────────
+    delivery-db:
+        ports:
+            - "3308:3306"
+        image: mysql:8.0
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: delivery
+            MYSQL_USER: delivery_user
+            MYSQL_PASSWORD: delivery_pass
+        volumes:
+            - delivery-db-data:/var/lib/mysql
+        networks:
+            - delivery-net
+
+    delivery-service:
+        build:
+            context: ./delivery-service
+            dockerfile: ../Dockerfile
+        ports:
+            - "8003:80"
+        environment:
+            DATABASE_URL: mysql://delivery_user:delivery_pass@delivery-db:3306/delivery
+            KAFKA_DSN: kafka:9092
+            APP_ENV: dev
+            APP_SECRET: delivery_secret_key
+        depends_on:
+            - delivery-db
+            - kafka
+        volumes:
+            - ./delivery-service:/var/www/html
+        networks:
+            - delivery-net
+
+    delivery-worker:
+        build:
+            context: ./delivery-service
+            dockerfile: ../Dockerfile
+        command: php bin/console messenger:consume kafka --time-limit=3600 -vv
+        environment:
+            DATABASE_URL: mysql://delivery_user:delivery_pass@delivery-db:3306/delivery
+            KAFKA_DSN: kafka:9092
+            APP_ENV: dev
+            APP_SECRET: delivery_secret_key
+        depends_on:
+            - delivery-db
+            - kafka
+        volumes:
+            - ./delivery-service:/var/www/html
+        networks:
+            - delivery-net
+
+networks:
+    delivery-net:
+        driver: bridge
+
+volumes:
+    user-db-data:
+    order-db-data:
+    delivery-db-data:
