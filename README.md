@@ -1,141 +1,121 @@
 # 🍔 Food Delivery — Microservices Demo
 
-A food delivery backend built with microservices architecture, demonstrating async communication between services via Apache Kafka.
+A food delivery backend built with microservices architecture, demonstrating async communication between services via Apache Kafka, JWT authentication via API Gateway.
 
 ## Architecture
+                    ┌─────────────────┐
+                    │   api-gateway   │
+      Client ──────▶│   (port 8000)   │
+                    │   JWT auth      │
+                    └────────┬────────┘
+                             │
+          ┌──────────────────┼──────────────────┐
+          ▼                  ▼                   ▼
 
-```
-┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│  order-service  │────▶│     Kafka        │────▶│delivery-service │
-│   (port 8002)   │     │  (port 9092)     │     │   (port 8003)   │
-└─────────────────┘     └──────────────────┘     └─────────────────┘
-                                  │
-                                  ▼
-                        ┌─────────────────┐
-                        │  user-service   │
-                        │   (port 8001)   │
-                        └─────────────────┘
-```
+┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
+│ user-service │ │ order-service │ │delivery-service │
+│ JWT + MySQL │ │ MySQL │ │ MySQL │
+└─────────────────┘ └────────┬────────┘ └────────▲────────┘
+│ Kafka │
+└────────────────────┘
+
 
 ### Services
 
 | Service | Port | Responsibility |
 |---|---|---|
-| `user-service` | 8001 | User management, notifications |
-| `order-service` | 8002 | Order creation and status tracking |
-| `delivery-service` | 8003 | Courier assignment and delivery tracking |
+| `api-gateway` | 8000 | JWT verification, request proxying |
+| `user-service` | — | Registration, login, JWT issuance |
+| `order-service` | — | Order creation and status tracking |
+| `delivery-service` | — | Courier assignment and delivery tracking |
 | `kafka-ui` | 8080 | Kafka topics browser (dev only) |
 
-Each service has its **own MySQL database** (Database per Service pattern).
+Each service has its **own MySQL database** (Database per Service pattern). Internal services are not exposed to the outside — all traffic goes through the API Gateway.
 
 ### Kafka Topics
 
 | Topic | Producer | Consumers |
 |---|---|---|
-| `order.created` | order-service | delivery-service, user-service |
-| `delivery.assigned` | delivery-service | order-service, user-service |
+| `orders` | order-service | delivery-service |
+| `deliveries` | delivery-service | order-service, user-service |
 
 ## Tech Stack
 
-- **PHP 8.4** + **Symfony 6**
+- **PHP 8.3** + **Symfony 7**
 - **Doctrine ORM** — database layer
 - **Symfony Messenger** — message bus abstraction
 - **Apache Kafka** — async event streaming
+- **Lexik JWT Authentication Bundle** — JWT auth
 - **MySQL 8** — one database per service
 - **Docker** + **Docker Compose**
 
 ## How It Works
 
-1. Client sends `POST /orders` to `order-service`
-2. Order is saved to DB
-3. `order-service` publishes `OrderPlaced` event to Kafka
-4. `delivery-service` worker consumes the event → assigns a courier → publishes `DeliveryAssigned`
-5. `user-service` worker consumes the event → sends SMS notification to the user
-6. Client gets `201 Created` response immediately (async, no waiting)
+1. Client registers and logs in via `api-gateway` → gets JWT token
+2. Client sends `POST /api/orders` with Bearer token to `api-gateway`
+3. Gateway verifies JWT, extracts `userId` and passes it via `X-User-Id` header to `order-service`
+4. Order is saved to DB, `OrderPlaced` event published to Kafka
+5. `delivery-service` worker consumes event → assigns courier → publishes `DeliveryAssigned`
+6. `order-service` worker consumes `DeliveryAssigned` → updates order status
+7. Client gets `201 Created` immediately (async, no waiting)
 
 ## Run Locally
 
 **Requirements:** Docker, Docker Compose
 
 ```bash
-# Clone the repo
-git clone https://github.com/YOUR_USERNAME/food-delivery-microservices.git
+git clone https://github.com/seraf83/food-delivery-microservices.git
 cd food-delivery-microservices
 
-# Start all services
 docker compose up -d
-
-# Check all containers are running
 docker compose ps
+
+# Create Kafka topics
+docker compose exec kafka kafka-topics --create --topic orders --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+docker compose exec kafka kafka-topics --create --topic deliveries --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
 ```
 
-## Test the Flow
+## API
 
-**Create an order:**
+**Register:**
 ```bash
-curl -X POST http://localhost:8002/orders \
+curl -X POST http://localhost:8000/api/register \
   -H "Content-Type: application/json" \
+  -d '{"email": "user@test.com", "password": "secret", "role": "customer"}'
+```
+
+**Login:**
+```bash
+curl -X POST http://localhost:8000/api/login \
+  -H "Content-Type: application/json" \
+  -d '{"email": "user@test.com", "password": "secret"}'
+```
+
+**Create order (with JWT):**
+```bash
+curl -X POST http://localhost:8000/api/orders \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <token>" \
   -d '{
-    "user_id": 1,
     "address": "Khreschatyk 1, Kyiv",
-    "items": [
-      {"name": "Burger", "qty": 2, "price": 150},
-      {"name": "Fries",  "qty": 1, "price": 60}
-    ],
+    "items": ["Burger", "Fries"],
     "total": 360
   }'
 ```
 
-**Watch workers process the event:**
+**Complete delivery:**
 ```bash
-docker compose logs -f order-worker delivery-worker user-worker
+curl -X POST http://localhost:8000/api/deliveries/{orderId}/complete \
+  -H "Authorization: Bearer <token>"
 ```
 
-You should see:
-```
-order-worker      | ✅ Order #1 saved
-delivery-worker   | 🛵 Courier Богдан Коваль assigned to order #1
-user-worker       | 📱 SMS → order#1: Courier is on the way! ETA: 41 min
-```
-
-**Complete the delivery:**
-```bash
-curl -s -X POST http://localhost:8003/deliveries/1/complete
-```
-
-You should see order status updated to `delivered` in the database.
-
-**Browse Kafka topics:**
-
-Open [http://localhost:8080](http://localhost:8080) in your browser.
-
-## Project Structure
-
-```
-food-delivery/
-├── docker-compose.yml
-├── order-service/
-│   ├── src/
-│   │   ├── Controller/OrderController.php
-│   │   ├── Entity/Order.php
-│   │   ├── Message/OrderPlaced.php
-│   │   └── MessageHandler/DeliveryAssignedHandler.php
-│   └── Dockerfile
-├── delivery-service/
-│   ├── src/
-│   │   ├── MessageHandler/OrderPlacedHandler.php
-│   │   └── Message/DeliveryAssigned.php
-│   └── Dockerfile
-└── user-service/
-    ├── src/
-    │   └── MessageHandler/DeliveryAssignedHandler.php
-    └── Dockerfile
-```
+**Browse Kafka topics:** [http://localhost:8080](http://localhost:8080)
 
 ## Key Concepts Demonstrated
 
+- **API Gateway** — single entry point, JWT verification, request proxying
 - **Microservices** — each service is independently deployable
 - **Database per Service** — no shared databases between services
-- **Event-Driven Architecture** — services communicate via Kafka events, not direct HTTP calls
+- **Event-Driven Architecture** — services communicate via Kafka events
+- **JWT Authentication** — stateless auth, token contains userId and role
 - **Async processing** — order response is immediate, courier assignment happens in background
-- **Message Bus pattern** — Symfony Messenger abstracts the transport (swap Kafka for RabbitMQ/Redis with config change only)

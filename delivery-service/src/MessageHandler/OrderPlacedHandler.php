@@ -49,7 +49,7 @@ class OrderPlacedHandler
             courierId:        $courier->getId(),
             courierName:      $courier->getName(),
             courierPhone:     $courier->getPhone(),
-            estimatedMinutes: random_int(20, 45),
+            estimatedMinutes: random_int(1, 3),
         ));
 
         echo "🛵 Courier {$courier->getName()} assigned to order #{$event->orderId}\n";

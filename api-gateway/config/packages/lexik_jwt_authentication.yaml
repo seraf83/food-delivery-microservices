@@ -1,0 +1,3 @@
+lexik_jwt_authentication:
+    public_key: '%env(resolve:JWT_PUBLIC_KEY)%'
+    token_ttl: 3600

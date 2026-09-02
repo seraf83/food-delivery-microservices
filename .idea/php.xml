@@ -180,9 +180,21 @@
       <path value="$PROJECT_DIR$/delivery-service/vendor/psr/http-factory" />
       <path value="$PROJECT_DIR$/delivery-service/vendor/psr/http-client" />
       <path value="$PROJECT_DIR$/delivery-service/vendor/koco/messenger-kafka" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/type-info" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/password-hasher" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/user-service/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/user-service/vendor/lexik/jwt-authentication-bundle" />
+      <path value="$PROJECT_DIR$/user-service/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/user-service/vendor/symfony/maker-bundle" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>

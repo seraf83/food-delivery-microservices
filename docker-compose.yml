@@ -61,8 +61,8 @@ services:
         build:
             context: ./user-service
             dockerfile: ../Dockerfile
-        ports:
-            - "8001:80"
+#        ports:
+#            - "8001:80"
         environment:
             DATABASE_URL: mysql://user_user:user_pass@user-db:3306/users
             KAFKA_DSN: kafka:9092
@@ -87,8 +87,10 @@ services:
             APP_ENV: dev
             APP_SECRET: user_secret_key
         depends_on:
-            - user-db
-            - kafka
+            kafka:
+                condition: service_healthy
+            user-db:
+                condition: service_started
         volumes:
             - ./user-service:/var/www/html
         networks:
@@ -113,8 +115,8 @@ services:
         build:
             context: ./order-service
             dockerfile: ../Dockerfile
-        ports:
-            - "8002:80"
+#        ports:
+#            - "8002:80"
         environment:
             DATABASE_URL: mysql://order_user:order_pass@order-db:3306/orders
             KAFKA_DSN: kafka:9092
@@ -129,6 +131,7 @@ services:
             - delivery-net
 
     order-worker:
+        restart: on-failure
         build:
             context: ./order-service
             dockerfile: ../Dockerfile
@@ -139,8 +142,10 @@ services:
             APP_ENV: dev
             APP_SECRET: order_secret_key
         depends_on:
-            - order-db
-            - kafka
+            kafka:
+                condition: service_healthy
+            order-db:
+                condition: service_started
         volumes:
             - ./order-service:/var/www/html
         networks:
@@ -165,8 +170,8 @@ services:
         build:
             context: ./delivery-service
             dockerfile: ../Dockerfile
-        ports:
-            - "8003:80"
+#        ports:
+#            - "8003:80"
         environment:
             DATABASE_URL: mysql://delivery_user:delivery_pass@delivery-db:3306/delivery
             KAFKA_DSN: kafka:9092
@@ -191,10 +196,36 @@ services:
             APP_ENV: dev
             APP_SECRET: delivery_secret_key
         depends_on:
-            - delivery-db
-            - kafka
+            kafka:
+                condition: service_healthy
+            delivery-db:
+                condition: service_started
         volumes:
             - ./delivery-service:/var/www/html
+        networks:
+            - delivery-net
+
+  # ─── API GATEWAY ──────────────────────────────────────────────
+    api-gateway:
+        build:
+            context: ./api-gateway
+            dockerfile: ../Dockerfile
+        ports:
+            - "8000:80"
+        environment:
+            APP_ENV: dev
+            APP_SECRET: gateway_secret_key
+            USER_SERVICE_URL: http://user-service:80
+            ORDER_SERVICE_URL: http://order-service:80
+            DELIVERY_SERVICE_URL: http://delivery-service:80
+            JWT_PUBLIC_KEY: '%kernel.project_dir%/config/jwt/public.pem'
+            JWT_PASSPHRASE: ''
+        depends_on:
+            - user-service
+            - order-service
+            - delivery-service
+        volumes:
+            - ./api-gateway:/var/www/html
         networks:
             - delivery-net
 

@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
+#[Route('/api')]
 class OrderController extends AbstractController
 {
     public function __construct(
@@ -25,8 +26,10 @@ class OrderController extends AbstractController
     {
         $data = json_decode($request->getContent(), true);
 
+        $userId = (int) $request->headers->get('X-User-Id');
+
         $order = new Order(
-            userId:          $data['user_id'],
+            userId:          $userId,
             deliveryAddress: $data['address'],
             items:           $data['items'],
             totalAmount:     $data['total'],

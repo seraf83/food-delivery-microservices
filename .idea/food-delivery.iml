@@ -176,6 +176,19 @@
       <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/symfony/var-dumper" />
       <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/symfony/var-exporter" />
       <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/lcobucci/jwt" />
+      <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/lexik/jwt-authentication-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/nikic/php-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/symfony/maker-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/symfony/password-hasher" />
+      <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/symfony/process" />
+      <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/symfony/property-access" />
+      <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/symfony/property-info" />
+      <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/symfony/security-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/symfony/security-core" />
+      <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/symfony/security-csrf" />
+      <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/symfony/security-http" />
+      <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/symfony/type-info" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
