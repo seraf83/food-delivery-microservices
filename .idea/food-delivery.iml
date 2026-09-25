@@ -188,7 +188,10 @@
       <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/symfony/security-core" />
       <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/symfony/security-csrf" />
       <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/symfony/security-http" />
-      <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/symfony/type-info" />
+      <excludeFolder url="file://$MODULE_DIR$/order-service/vendor/food-delivery/shared" />
+      <excludeFolder url="file://$MODULE_DIR$/order-service/vendor/symfony/polyfill-php86" />
+      <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/food-delivery/shared" />
+      <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/symfony/polyfill-php86" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

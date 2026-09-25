@@ -3,8 +3,14 @@
     "license": "proprietary",
     "minimum-stability": "stable",
     "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../packages/shared"
+        }
+    ],
     "require": {
-        "php": ">=8.2",
+        "php": ">=8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/doctrine-bundle": "^3.2.2",
@@ -12,15 +18,20 @@
         "doctrine/orm": "^3.6.3",
         "koco/messenger-kafka": "^0.18.0",
         "lexik/jwt-authentication-bundle": "^3.2",
-        "symfony/console": "7.2.*",
-        "symfony/dotenv": "7.2.*",
+        "symfony/console": "6.4.*",
+        "symfony/dotenv": "6.4.*",
         "symfony/flex": "^2.10",
-        "symfony/framework-bundle": "7.2.*",
-        "symfony/messenger": "7.2.*",
-        "symfony/runtime": "7.2.*",
-        "symfony/serializer": "7.2.*",
-        "symfony/validator": "7.2.*",
-        "symfony/yaml": "7.2.*"
+        "symfony/framework-bundle": "6.4.*",
+        "symfony/messenger": "6.4.*",
+        "symfony/runtime": "6.4.*",
+        "symfony/serializer": "6.4.*",
+        "symfony/validator": "6.4.*",
+        "symfony/yaml": "6.4.*",
+        "symfony/cache": "6.4.*",
+        "symfony/error-handler": "6.4.*",
+        "symfony/security-bundle": "6.4.*",
+        "symfony/security-http": "6.4.*",
+        "food-delivery/shared": "*"
     },
     "config": {
         "allow-plugins": {
@@ -74,7 +85,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "7.2.*"
+            "require": "6.4.*"
         }
     },
     "require-dev": {

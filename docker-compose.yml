@@ -59,8 +59,10 @@ services:
 
     user-service:
         build:
-            context: ./user-service
-            dockerfile: ../Dockerfile
+            context: .
+            dockerfile: Dockerfile
+            args:
+                SERVICE_DIR: user-service
 #        ports:
 #            - "8001:80"
         environment:
@@ -78,8 +80,10 @@ services:
 
     user-worker:
         build:
-            context: ./user-service
-            dockerfile: ../Dockerfile
+            context: .
+            dockerfile: Dockerfile
+            args:
+                SERVICE_DIR: user-service
         command: php bin/console messenger:consume kafka_orders kafka_deliveries --time-limit=3600 -vv
         environment:
             DATABASE_URL: mysql://user_user:user_pass@user-db:3306/users
@@ -113,8 +117,10 @@ services:
 
     order-service:
         build:
-            context: ./order-service
-            dockerfile: ../Dockerfile
+            context: .
+            dockerfile: Dockerfile
+            args:
+                SERVICE_DIR: order-service
 #        ports:
 #            - "8002:80"
         environment:
@@ -133,8 +139,10 @@ services:
     order-worker:
         restart: on-failure
         build:
-            context: ./order-service
-            dockerfile: ../Dockerfile
+            context: .
+            dockerfile: Dockerfile
+            args:
+                SERVICE_DIR: order-service
         command: php bin/console messenger:consume kafka --time-limit=3600 -vv
         environment:
             DATABASE_URL: mysql://order_user:order_pass@order-db:3306/orders

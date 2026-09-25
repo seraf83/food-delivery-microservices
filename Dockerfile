@@ -20,9 +20,11 @@ RUN echo '<VirtualHost *:80>\n\
 
 WORKDIR /var/www/html
 
-COPY composer.json composer.lock* ./
+ARG SERVICE_DIR
+COPY ${SERVICE_DIR}/composer.json ${SERVICE_DIR}/composer.lock* ./
+COPY packages* /var/www/packages
 RUN composer install --no-interaction --no-scripts
 
-COPY . .
+COPY ${SERVICE_DIR} .
 
 RUN chown -R www-data:www-data /var/www/html

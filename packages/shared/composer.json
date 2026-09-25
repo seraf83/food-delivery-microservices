@@ -1,0 +1,16 @@
+{
+  "name": "food-delivery/shared",
+  "description": "Shared contracts (events, DTOs) between microservices",
+  "type": "library",
+  "version": "1.0.0",
+  "require": {
+    "php": ">=8.1",
+    "symfony/serializer": "^6.4 || ^7.0",
+    "symfony/validator": "^6.4 || ^7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Shared\\": "src/"
+    }
+  }
+}
