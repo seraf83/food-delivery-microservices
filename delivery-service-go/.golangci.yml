@@ -1,0 +1,28 @@
+version: "2"
+
+linters:
+  default: standard
+  enable:
+    - bodyclose
+    - errorlint
+    - gocritic
+    - misspell
+    - nilerr
+    - noctx
+    - revive
+    - sqlclosecheck
+    - unconvert
+  exclusions:
+    presets:
+      - std-error-handling
+  settings:
+    revive:
+      rules:
+        # Exported identifiers live under internal/, doc comments on each would be noise.
+        - name: exported
+          disabled: true
+
+formatters:
+  enable:
+    - gofmt
+    - goimports

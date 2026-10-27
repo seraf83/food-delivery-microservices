@@ -1,0 +1,61 @@
+name: delivery-service-go
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "delivery-service-go/**"
+      - ".github/workflows/delivery-service-go.yml"
+  pull_request:
+    paths:
+      - "delivery-service-go/**"
+      - ".github/workflows/delivery-service-go.yml"
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: delivery-service-go
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: delivery-service-go/go.mod
+          cache-dependency-path: delivery-service-go/go.sum
+
+      - name: go vet
+        run: go vet ./...
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v8
+        with:
+          version: v2.5.0
+          working-directory: delivery-service-go
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: delivery-service-go/go.mod
+          cache-dependency-path: delivery-service-go/go.sum
+
+      - name: go test
+        run: go test -race -count=1 ./...
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [lint, test]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t delivery-service-go:ci .
