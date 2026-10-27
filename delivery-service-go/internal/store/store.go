@@ -109,7 +109,7 @@ func (s *Store) AssignCourier(ctx context.Context, orderID, userID int64, addres
 	if err != nil {
 		return Courier{}, false, err
 	}
-	defer tx.Rollback()
+	defer func() { _ = tx.Rollback() }() // no-op after Commit
 
 	var existingCourier int64
 	err = tx.QueryRowContext(ctx,
@@ -160,7 +160,7 @@ func (s *Store) CompleteDelivery(ctx context.Context, orderID int64, at time.Tim
 	if err != nil {
 		return Delivery{}, err
 	}
-	defer tx.Rollback()
+	defer func() { _ = tx.Rollback() }() // no-op after Commit
 
 	d, err := scanDelivery(tx.QueryRowContext(ctx, selectDelivery+` WHERE order_id = ? LIMIT 1 FOR UPDATE`, orderID))
 	if err != nil {

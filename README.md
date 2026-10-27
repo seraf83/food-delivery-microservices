@@ -27,7 +27,7 @@ A food delivery backend built with microservices architecture, demonstrating asy
 | `api-gateway` | 8000 | JWT verification, request proxying |
 | `user-service` | — | Registration, login, JWT issuance |
 | `order-service` | — | Order creation and status tracking |
-| `delivery-service-old(php)` | — | Courier assignment and delivery tracking |
+| `delivery-service` (Go, [`delivery-service-go/`](delivery-service-go)) | — | Courier assignment and delivery tracking |
 | `kafka-ui` | 8080 | Kafka topics browser (dev only) |
 
 Each service has its **own MySQL database** (Database per Service pattern). Internal services are not exposed to the outside — all traffic goes through the API Gateway.
@@ -56,7 +56,7 @@ Each service has its **own MySQL database** (Database per Service pattern). Inte
 2. Client sends `POST /api/orders` with Bearer token to `api-gateway`
 3. Gateway verifies JWT, extracts `userId` and passes it via `X-User-Id` header to `order-service`
 4. Order is saved to DB, `OrderPlaced` event published to Kafka
-5. `delivery-service-old(php)` worker consumes event → assigns courier → publishes `DeliveryAssigned`
+5. `delivery-worker` (Go) consumes event → assigns courier → publishes `DeliveryAssigned`
 6. `order-service` worker consumes `DeliveryAssigned` → updates order status
 7. Client gets `201 Created` immediately (async, no waiting)
 
