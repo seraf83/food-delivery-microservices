@@ -1,5 +1,7 @@
 # 🍔 Food Delivery — Microservices Demo
 
+[![delivery-service-go](https://github.com/seraf83/food-delivery-microservices/actions/workflows/delivery-service-go.yml/badge.svg)](https://github.com/seraf83/food-delivery-microservices/actions/workflows/delivery-service-go.yml)
+
 A food delivery backend built with microservices architecture, demonstrating async communication between services via Apache Kafka, JWT authentication via API Gateway.
 
 ## Architecture

@@ -1,5 +1,7 @@
 # delivery-service (Go)
 
+[![delivery-service-go](https://github.com/seraf83/food-delivery-microservices/actions/workflows/delivery-service-go.yml/badge.svg)](https://github.com/seraf83/food-delivery-microservices/actions/workflows/delivery-service-go.yml)
+
 Assigns couriers to new orders and tracks deliveries. A Go rewrite of the former
 Symfony service (kept in [`../delivery-service-legacy`](../delivery-service-legacy)).
 It is a drop-in replacement: same HTTP API, same Kafka message format, same

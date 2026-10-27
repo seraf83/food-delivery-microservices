@@ -41,7 +41,7 @@ func TestStatusVisibility(t *testing.T) {
 		{"internal call", "", "", http.StatusOK},
 	}
 	for _, c := range cases {
-		req := httptest.NewRequest(http.MethodGet, "/deliveries/25", nil)
+		req := httptest.NewRequestWithContext(t.Context(), http.MethodGet, "/deliveries/25", nil)
 		if c.role != "" {
 			req.Header.Set("X-User-Id", c.userID)
 			req.Header.Set("X-User-Role", c.role)
