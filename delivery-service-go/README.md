@@ -103,9 +103,18 @@ go run ./cmd/delivery-service consume
 
 ```bash
 go vet ./...
-go test -race ./...
+go test -race ./...         # needs Docker: store tests start MySQL via testcontainers
+go test -short ./...        # unit tests only, no Docker
 golangci-lint run
 ```
+
+| Package | Tests |
+|---------|-------|
+| `config` | `DATABASE_URL` conversion, env defaults |
+| `events` | JSON field order matches the PHP constructors |
+| `httpapi` | customers only see their own deliveries |
+| `worker` | message handling with fake store/publisher; offsets are committed only after success |
+| `store` | integration tests on real MySQL 8: courier assignment, redelivery, completion, and concurrent assignment (fails without `SKIP LOCKED`) |
 
 CI runs the same checks on every push and pull request that touches this
 directory (`.github/workflows/delivery-service-go.yml`).

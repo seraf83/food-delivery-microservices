@@ -16,14 +16,30 @@ import (
 	"github.com/seraf83/food-delivery/delivery-service/internal/store"
 )
 
+type Store interface {
+	AssignCourier(ctx context.Context, orderID, userID int64, address string) (store.Courier, bool, error)
+}
+
+type Publisher interface {
+	Publish(ctx context.Context, typ string, data any) error
+}
+
+// Reader is the subset of *kafka.Reader the worker uses.
+type Reader interface {
+	FetchMessage(ctx context.Context) (kafka.Message, error)
+	CommitMessages(ctx context.Context, msgs ...kafka.Message) error
+	Close() error
+}
+
 type Worker struct {
-	reader *kafka.Reader
-	store  *store.Store
-	pub    *events.Publisher
+	reader Reader
+	store  Store
+	pub    Publisher
 	log    *slog.Logger
 }
 
-func New(cfg config.Config, st *store.Store, pub *events.Publisher, log *slog.Logger) *Worker {
+func New(cfg config.Config, st Store, pub Publisher, log *slog.Logger) *Worker {
+	log.Info("consuming", "topic", cfg.OrdersTopic, "group", cfg.ConsumerGroup)
 	return &Worker{
 		reader: kafka.NewReader(kafka.ReaderConfig{
 			Brokers:     cfg.KafkaBrokers,
@@ -42,7 +58,6 @@ func New(cfg config.Config, st *store.Store, pub *events.Publisher, log *slog.Lo
 // AssignCourier tolerates.
 func (w *Worker) Run(ctx context.Context) error {
 	defer w.reader.Close()
-	w.log.Info("consuming", "topic", w.reader.Config().Topic, "group", w.reader.Config().GroupID)
 
 	for {
 		msg, err := w.reader.FetchMessage(ctx)
