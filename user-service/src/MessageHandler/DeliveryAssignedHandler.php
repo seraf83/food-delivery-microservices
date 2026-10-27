@@ -18,7 +18,7 @@ class DeliveryAssignedHandler
     {
         $message = "🛵 Courier {$event->courierName} is on the way! Phone: {$event->courierPhone}. ETA: {$event->estimatedMinutes} min";
 
-        $notification = new Notification(0, $message, 'delivery_assigned');
+        $notification = new Notification($event->userId, $message, 'delivery_assigned');
         $this->em->persist($notification);
         $this->em->flush();
 

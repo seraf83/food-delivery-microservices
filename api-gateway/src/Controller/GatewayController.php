@@ -67,6 +67,16 @@ class GatewayController extends AbstractController
         );
     }
 
+    #[Route('/api/deliveries/{orderId}', methods: ['GET'], requirements: ['orderId' => '\d+'])]
+    public function deliveryStatus(Request $request, int $orderId): Response
+    {
+        return $this->proxyService->proxy(
+            url: $_ENV['DELIVERY_SERVICE_URL'] . '/deliveries/' . $orderId,
+            request: $request,
+            extraHeaders: $this->userHeaders()
+        );
+    }
+
     #[Route('/api/deliveries/{orderId}/complete', methods: ['POST'])]
     public function completeDelivery(Request $request, int $orderId): Response
     {

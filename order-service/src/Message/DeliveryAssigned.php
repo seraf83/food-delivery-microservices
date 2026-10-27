@@ -12,5 +12,8 @@ final class DeliveryAssigned
         public readonly string $courierName,
         public readonly string $courierPhone,
         public readonly int    $estimatedMinutes,
+        // Last and defaulted: the Kafka serializer maps fields by position,
+        // and older messages were published without it.
+        public readonly int    $userId = 0,
     ) {}
 }

@@ -16,8 +16,9 @@ class OrderPlacedHandler
 
     public function __invoke(OrderPlaced $event): void
     {
+        // Items arrive either as plain names (["Burger"]) or as [{name, qty}].
         $items = implode(', ', array_map(
-            fn($i) => "{$i['name']} x{$i['qty']}",
+            fn($i) => is_array($i) ? "{$i['name']} x" . ($i['qty'] ?? 1) : "{$i} x1",
             $event->items
         ));
 

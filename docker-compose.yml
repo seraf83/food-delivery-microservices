@@ -176,40 +176,33 @@ services:
 
     delivery-service:
         build:
-            context: ./delivery-service
-            dockerfile: ../Dockerfile
+            context: ./delivery-service-go
+        command: ["serve"]
+        restart: on-failure
 #        ports:
 #            - "8003:80"
         environment:
             DATABASE_URL: mysql://delivery_user:delivery_pass@delivery-db:3306/delivery
             KAFKA_DSN: kafka:9092
-            APP_ENV: dev
-            APP_SECRET: delivery_secret_key
         depends_on:
             - delivery-db
             - kafka
-        volumes:
-            - ./delivery-service:/var/www/html
         networks:
             - delivery-net
 
     delivery-worker:
         build:
-            context: ./delivery-service
-            dockerfile: ../Dockerfile
-        command: php bin/console messenger:consume kafka --time-limit=3600 -vv
+            context: ./delivery-service-go
+        command: ["consume"]
+        restart: on-failure
         environment:
             DATABASE_URL: mysql://delivery_user:delivery_pass@delivery-db:3306/delivery
             KAFKA_DSN: kafka:9092
-            APP_ENV: dev
-            APP_SECRET: delivery_secret_key
         depends_on:
             kafka:
                 condition: service_healthy
             delivery-db:
                 condition: service_started
-        volumes:
-            - ./delivery-service:/var/www/html
         networks:
             - delivery-net
 

@@ -2,68 +2,12 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/delivery-service/src" isTestSource="false" packagePrefix="App\" />
-      <sourceFolder url="file://$MODULE_DIR$/delivery-service/tests" isTestSource="true" packagePrefix="App\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/order-service/src" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/order-service/tests" isTestSource="true" packagePrefix="App\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/user-service/src" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/user-service/tests" isTestSource="true" packagePrefix="App\Tests\" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/composer" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/doctrine/collections" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/doctrine/dbal" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/doctrine/deprecations" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/doctrine/doctrine-bundle" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/doctrine/doctrine-migrations-bundle" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/doctrine/event-manager" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/doctrine/inflector" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/doctrine/instantiator" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/doctrine/lexer" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/doctrine/migrations" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/doctrine/orm" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/doctrine/persistence" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/doctrine/sql-formatter" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/koco/messenger-kafka" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/psr/cache" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/psr/clock" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/psr/container" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/psr/event-dispatcher" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/psr/http-client" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/psr/http-factory" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/psr/http-message" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/psr/log" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/cache" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/cache-contracts" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/clock" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/config" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/console" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/dependency-injection" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/deprecation-contracts" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/doctrine-bridge" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/dotenv" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/error-handler" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/event-dispatcher" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/event-dispatcher-contracts" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/filesystem" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/finder" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/flex" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/framework-bundle" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/http-foundation" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/http-kernel" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/messenger" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/polyfill-intl-grapheme" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/polyfill-intl-normalizer" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/polyfill-mbstring" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/routing" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/runtime" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/serializer" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/service-contracts" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/stopwatch" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/string" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/translation-contracts" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/validator" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/var-dumper" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/var-exporter" />
-      <excludeFolder url="file://$MODULE_DIR$/delivery-service/vendor/symfony/yaml" />
+      <sourceFolder url="file://$MODULE_DIR$/delivery-service-old(php)/src" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/delivery-service-old(php)/tests" isTestSource="true" packagePrefix="App\Tests\" />
       <excludeFolder url="file://$MODULE_DIR$/order-service/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/order-service/vendor/doctrine/collections" />
       <excludeFolder url="file://$MODULE_DIR$/order-service/vendor/doctrine/dbal" />
@@ -192,6 +136,62 @@
       <excludeFolder url="file://$MODULE_DIR$/order-service/vendor/symfony/polyfill-php86" />
       <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/food-delivery/shared" />
       <excludeFolder url="file://$MODULE_DIR$/user-service/vendor/symfony/polyfill-php86" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/doctrine/collections" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/doctrine/dbal" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/doctrine/deprecations" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/doctrine/doctrine-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/doctrine/doctrine-migrations-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/doctrine/event-manager" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/doctrine/inflector" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/doctrine/instantiator" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/doctrine/lexer" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/doctrine/migrations" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/doctrine/orm" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/doctrine/persistence" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/doctrine/sql-formatter" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/koco/messenger-kafka" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/psr/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/psr/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/psr/container" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/psr/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/psr/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/cache-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/config" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/console" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/dependency-injection" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/deprecation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/doctrine-bridge" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/dotenv" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/error-handler" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/event-dispatcher-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/filesystem" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/finder" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/flex" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/framework-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/http-foundation" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/http-kernel" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/messenger" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/polyfill-intl-grapheme" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/polyfill-intl-normalizer" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/routing" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/runtime" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/serializer" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/service-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/stopwatch" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/string" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/translation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/validator" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/var-dumper" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/var-exporter" />
+      <excludeFolder url="file://$MODULE_DIR$/delivery-service-old(php)/vendor/symfony/yaml" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
